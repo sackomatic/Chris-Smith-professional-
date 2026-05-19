@@ -632,7 +632,7 @@
     .form-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
 
     .form-success { display: none; text-align: center; padding: 2rem; }
-    .form-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--off-white); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .form-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--off-white); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 1rem; }
     .form-success-icon svg { width: 24px; height: 24px; fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
     .form-success h3 { font-family: var(--ff-display); color: var(--navy); margin-bottom: 0.5rem; }
     .form-success p { font-size: 0.9rem; color: var(--gray-dark); }
@@ -658,6 +658,8 @@
     .footer-col ul a:hover { color: var(--white); }
 
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+
+    .footer-credit a { color: var(--accent); }
 
     /* ─── BACK TO TOP ──────────────────────────────────────────── */
     #back-to-top {
@@ -998,744 +1000,387 @@
   <nav id="nav">
     <div class="container nav-inner">
 
-      <a href="#home" class="nav-logo" aria-label="CS Web Solutions home">
-        <div class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <div>
-          <span class="logo-text">CS Web Solutions</span>
-          <span class="logo-sub">Princeton, NC</span>
+          <div class="logo-text">Christopher Smith</div>
+          <span class="logo-sub">Web Solutions</span>
         </div>
       </a>
 
-      <ul class="nav-links" role="list">
-        <li><a href="#home" class="active" data-nav="home">Home</a></li>
-        <li><a href="#about" data-nav="about">About</a></li>
-        <li><a href="#services" data-nav="services">Services</a></li>
-        <li><a href="#portfolio" data-nav="portfolio">Portfolio</a></li>
-        <li><a href="#contact" data-nav="contact">Contact</a></li>
+      <ul class="nav-links">
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="https://github.com/sackomatic/Chris-Smith-professional-" target="_blank" rel="noopener noreferrer">GitHub</a></li>
       </ul>
 
-      <a href="#contact" class="nav-cta">Free Quote</a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
 
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- Mobile drawer -->
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
-    <a href="#home" class="mob-link">Home</a>
-    <a href="#about" class="mob-link">About</a>
-    <a href="#services" class="mob-link">Services</a>
-    <a href="#portfolio" class="mob-link">Portfolio</a>
-    <a href="#contact" class="mob-link">Contact</a>
+  <div class="mobile-menu" id="mob-menu">
+    <a href="#portfolio" class="mob-l">Portfolio</a>
+    <a href="templates.html" class="mob-l">Templates</a>
+    <a href="https://github.com/sackomatic/Chris-Smith-professional-" class="mob-l" target="_blank">GitHub</a>
+    <a href="#contact" class="mob-l">Contact</a>
   </div>
 
-  <!-- ─── HERO ───────────────────────────────────────────────── -->
-  <section id="home" aria-label="Hero">
-
-    <div class="hero-geo" aria-hidden="true">
-      <div class="dot-grid"></div>
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section id="home">
+    <div class="hero-geo">
       <div class="geo-circle"></div>
       <div class="geo-circle"></div>
       <div class="geo-circle"></div>
       <div class="geo-line geo-line-h"></div>
       <div class="geo-line geo-line-v"></div>
+      <div class="dot-grid"></div>
     </div>
-
     <div class="container">
       <div class="hero-content">
-
         <div>
-          <div class="local-badge">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Proudly Serving Princeton, NC &amp; Surrounding Areas
-          </div>
-          <p class="hero-eyebrow">Professional Web Services</p>
-          <h1 class="hero-title">
-            Your business<br/>deserves a<br/><em>great</em> website.
-          </h1>
-          <p class="hero-subtitle">
-            Hi, I'm Christopher Smith — a local web professional helping Princeton-area businesses get online, look great, and stay up to date. From brand-new sites to ongoing support, I've got you covered.
-          </p>
+          <p class="hero-eyebrow">Web Solutions for Modern Businesses</p>
+          <h1 class="hero-title">Your Vision, <em>Beautifully</em> Realized</h1>
+          <p class="hero-subtitle">Custom web design and development that transforms your ideas into stunning digital experiences. From concept to launch, we craft websites that convert and inspire.</p>
           <div class="hero-actions">
-            <a href="#services" class="btn btn-primary">See What I Offer ↓</a>
-            <a href="#contact" class="btn btn-outline">Get a Free Quote</a>
+            <a href="#contact" class="btn btn-primary">Start a Project</a>
+            <a href="#portfolio" class="btn btn-outline">View My Work</a>
+          </div>
+          <div class="local-badge">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Based in Princeton, NC
           </div>
         </div>
-
-        <div class="hero-features" aria-label="Key services">
-          <div class="hero-feature">
-            <div class="hero-feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            </div>
+        <div class="hero-features">
+          <div class="hero-feature reveal">
+            <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>
             <div>
-              <div class="hero-feature-title">New Website Builds</div>
-              <div class="hero-feature-body">Custom-designed sites built from the ground up to represent your brand the right way.</div>
+              <div class="hero-feature-title">Fast Turnaround</div>
+              <div class="hero-feature-body">Efficient process. Professional quality. On-time delivery.</div>
             </div>
           </div>
-          <div class="hero-feature">
-            <div class="hero-feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            </div>
+          <div class="hero-feature reveal reveal-delay-1">
+            <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v4"/></svg></div>
             <div>
-              <div class="hero-feature-title">Website Hosting</div>
-              <div class="hero-feature-body">Reliable, fast hosting so your site stays online around the clock without any hassle.</div>
+              <div class="hero-feature-title">Mobile Ready</div>
+              <div class="hero-feature-body">Responsive design that works flawlessly on all devices.</div>
             </div>
           </div>
-          <div class="hero-feature">
-            <div class="hero-feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            </div>
+          <div class="hero-feature reveal reveal-delay-2">
+            <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4M15 19h4a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-4M9 5a2 2 0 1 0 6 0M9 11h6M9 15h6"/></svg></div>
             <div>
-              <div class="hero-feature-title">Content Updates</div>
-              <div class="hero-feature-body">Need to change hours, add photos, or update your menu? I'll handle it quickly for you.</div>
-            </div>
-          </div>
-          <div class="hero-feature">
-            <div class="hero-feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <div>
-              <div class="hero-feature-title">Tech Support</div>
-              <div class="hero-feature-body">Something not working right? Reach out and I'll get it sorted fast — no tech jargon.</div>
+              <div class="hero-feature-title">Custom Solutions</div>
+              <div class="hero-feature-body">Tailored to your brand and business goals, not templates.</div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
-    <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-hint">
+      <span>Scroll to explore</span>
       <div class="scroll-hint-line"></div>
-      <span>Scroll</span>
     </div>
-
   </section>
 
-  <!-- ─── ABOUT ──────────────────────────────────────────────── -->
-  <section id="about" aria-label="About Christopher Smith">
+  <!-- ─── ABOUT ─────────────────────────────────────────────────– -->
+  <section id="about">
     <div class="container">
       <div class="about-grid">
-
-        <div class="about-visual reveal" aria-hidden="true">
+        <div class="about-visual reveal">
           <div class="about-bracket"></div>
           <div class="about-card-main">
-            <p class="about-card-quote">"Every local business deserves a professional online presence — no matter the size."</p>
-          </div>
-          <div class="about-card-accent">
-            <div class="card-big-num">100%</div>
-            <div class="card-big-label">Local &amp; personal service</div>
+            <div class="about-card-quote">I create digital experiences that help businesses connect with their audience and achieve their goals.</div>
+            <div class="about-card-accent">
+              <div class="card-big-num">3+</div>
+              <div class="card-big-label">Years Building</div>
+            </div>
           </div>
         </div>
-
         <div class="about-text-block">
           <span class="section-label reveal">About Me</span>
-          <h2 class="section-title reveal reveal-delay-1">A local expert<br/>you can actually <em>call.</em></h2>
+          <h2 class="section-title reveal reveal-delay-1">Crafting Digital <em>Excellence</em></h2>
           <div class="rule reveal reveal-delay-2"></div>
-          <p class="section-body reveal reveal-delay-2">
-            I'm Christopher Smith, a web professional based right here in Princeton, NC. I started CS Web Solutions because I saw too many great local businesses either without a website, or stuck with something outdated that didn't reflect what they actually do.
-          </p>
-          <br/>
-          <p class="section-body reveal reveal-delay-2">
-            I work one-on-one with every client — no call centers, no outsourcing. When you reach out, you get me directly. Whether you're a restaurant, a contractor, a salon, or any other local business, I'll build and maintain something you're proud to share with customers.
-          </p>
-
-          <ul class="values-list" aria-label="Why work with me">
+          <p class="section-body reveal reveal-delay-2">I'm a web designer and developer based in Princeton, NC, dedicated to creating beautiful, functional websites that tell your story and drive results.</p>
+          <p class="section-body reveal reveal-delay-2">Whether you need a brand new site, a redesign, or a custom web application, I bring expertise in modern design, responsive development, and user-centered thinking.</p>
+          <ul class="values-list">
             <li class="reveal reveal-delay-2">
-              <div class="value-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <div class="value-text">
-                <strong>Personal &amp; Local</strong>
-                <span>You'll always deal directly with me — a real person from your community who cares about your success.</span>
-              </div>
+              <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="value-text"><strong>Strategic Approach</strong><span>Every design choice supports your business objectives.</span></div>
             </li>
             <li class="reveal reveal-delay-3">
-              <div class="value-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="value-text">
-                <strong>Straightforward Pricing</strong>
-                <span>No hidden fees or confusing contracts. You'll know exactly what you're getting and what it costs upfront.</span>
-              </div>
+              <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="value-text"><strong>Clean Code</strong><span>Fast-loading, maintainable, and built for longevity.</span></div>
             </li>
-            <li class="reveal reveal-delay-4">
-              <div class="value-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div class="value-text">
-                <strong>Fast Turnaround</strong>
-                <span>I respect your time. Most updates are done same or next day, and new sites are delivered on schedule.</span>
-              </div>
+            <li class="reveal reveal-delay-3">
+              <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="value-text"><strong>Continuous Improvement</strong><span>Staying current with industry standards and best practices.</span></div>
             </li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ─── SERVICES ───────────────────────────────────────────── -->
-  <section id="services" aria-label="Services">
+  <!-- ─── SERVICES ──────────────────────────────────────────────── -->
+  <section id="services">
     <div class="container">
       <div class="services-header">
         <span class="section-label reveal">What I Offer</span>
-        <h2 class="section-title reveal reveal-delay-1">Everything your business<br/>needs to <em>shine online.</em></h2>
-        <p class="section-body reveal reveal-delay-2">Simple, affordable web services built for small and local businesses in the Princeton area. No tech jargon — just results you can see.</p>
+        <h2 class="section-title reveal reveal-delay-1">Services That <em>Scale</em></h2>
+        <div class="rule reveal reveal-delay-2"></div>
+        <p class="section-body reveal reveal-delay-2" style="text-align: center; margin: 1rem auto 0;">Comprehensive web design and development services to build your online presence.</p>
       </div>
-
-      <div class="services-grid" role="list">
-
-        <article class="service-card reveal" role="listitem">
+      <div class="services-grid">
+        <div class="service-card reveal">
           <div class="service-num">01</div>
-          <div class="service-icon-wrap" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
-          <h3 class="service-title">New Website Design &amp; Build</h3>
-          <p class="service-body">Don't have a website yet — or embarrassed by your current one? I'll design and build you a clean, professional site from scratch that looks great on phones, tablets, and computers. Includes your branding, contact info, photos, and anything else you need to make a great first impression.</p>
-        </article>
-
-        <article class="service-card reveal reveal-delay-1" role="listitem">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg></div>
+          <div class="service-title">Web Design</div>
+          <p class="service-body">Beautiful, modern interfaces designed with your users and brand in mind. Responsive across all devices and optimized for conversion.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
           <div class="service-num">02</div>
-          <div class="service-icon-wrap" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <h3 class="service-title">Website Hosting</h3>
-          <p class="service-body">Once your site is live, it needs a reliable home on the internet. I offer affordable hosting plans that keep your site fast, secure, and online 24/7. No complicated dashboards to manage — I handle it all so you can focus on running your business.</p>
-        </article>
-
-        <article class="service-card reveal reveal-delay-1" role="listitem">
-          <div class="service-num">03</div>
-          <div class="service-icon-wrap" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          </div>
-          <h3 class="service-title">Website Updates &amp; Edits</h3>
-          <p class="service-body">Businesses change — and your website should keep up. Need to update your hours, add new services, swap out photos, post an announcement, or adjust your pricing? Just send me a message and I'll get it updated quickly, usually same or next business day.</p>
-        </article>
-
-        <article class="service-card reveal reveal-delay-2" role="listitem">
-          <div class="service-num">04</div>
-          <div class="service-icon-wrap" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <h3 class="service-title">Tech Support</h3>
-          <p class="service-body">Something not working right on your site? Getting error messages, having trouble with your business email, or just confused about something tech-related? I'm here to help. Reach out by phone, text, or email and I'll walk you through it — plain and simple, no tech jargon.</p>
-        </article>
-
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M9 3L5 7v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7l-4-4H9zm0 2h6v2H9V5zm6 12H9v-4h6v4z"/></svg></div>
+          <div class="service-title">Development</div>
+          <p class="service-body">Clean, performant code built with modern technologies. SEO-friendly architecture and fast-loading pages that keep visitors engaged.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── PORTFOLIO ────────────────────────────────────────────── -->
-  <section id="portfolio" aria-label="Portfolio & Templates">
+  <!-- ─── PORTFOLIO ─────────────────────────────────────────────── -->
+  <section id="portfolio">
     <div class="container">
-
       <div class="portfolio-header">
-        <span class="section-label reveal">Work &amp; Templates</span>
-        <h2 class="section-title reveal reveal-delay-1">Projects &amp; website<br/><em>templates I offer.</em></h2>
-        <p class="section-body reveal reveal-delay-2">Browse examples of sites I can build for your business. Every template is fully customized — your colors, your content, your brand. See something you like? Reach out and we'll make it yours.</p>
+        <span class="section-label reveal">Recent Work</span>
+        <h2 class="section-title reveal reveal-delay-1">Featured <em>Projects</em></h2>
+        <div class="rule reveal reveal-delay-2"></div>
+        <p class="section-body reveal reveal-delay-2" style="margin: 1rem auto 0; text-align: center;">A selection of custom website templates designed for service-based and retail businesses.</p>
       </div>
-
-      <!-- Filter tabs -->
-      <div class="portfolio-filters reveal reveal-delay-2" role="group" aria-label="Filter by category">
+      <div class="portfolio-filters">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="restaurant">Restaurant &amp; Food</button>
-        <button class="filter-btn" data-filter="trades">Trades &amp; Contractors</button>
-        <button class="filter-btn" data-filter="retail">Retail &amp; Shops</button>
-        <button class="filter-btn" data-filter="service">Professional Services</button>
+        <button class="filter-btn" data-filter="service">Service</button>
+        <button class="filter-btn" data-filter="retail">Retail</button>
       </div>
-
       <div class="portfolio-grid">
 
-        <!-- 1. Restaurant -->
-        <div class="portfolio-card reveal" data-category="restaurant">
+        <!-- Smith & Sons Contracting -->
+        <div class="portfolio-card reveal" data-category="service">
           <div class="portfolio-preview">
             <div class="browser-bar">
-              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
               <div class="browser-url"></div>
             </div>
-            <div class="portfolio-mockup" style="background:#1a1008;">
-              <div class="mockup-nav" style="background:#c8893a;"></div>
-              <div class="mockup-hero" style="background:linear-gradient(135deg,#2d1a06,#7c4a1a);">
+            <div class="portfolio-mockup">
+              <div class="mockup-nav" style="background: #0d1b2a;"></div>
+              <div class="mockup-hero" style="background: linear-gradient(135deg, #0d1b2a, #1e3a5f);">
                 <div class="mockup-line"></div>
                 <div class="mockup-line short"></div>
-                <div class="mockup-btn-fake"></div>
+                <div class="mockup-btn-fake" style="background: #f97316; width: 80px;"></div>
               </div>
               <div class="mockup-cards">
-                <div class="mockup-card-block" style="background:#c8893a;opacity:0.5;"></div>
-                <div class="mockup-card-block" style="background:#c8893a;opacity:0.5;"></div>
-                <div class="mockup-card-block" style="background:#c8893a;opacity:0.5;"></div>
+                <div class="mockup-card-block" style="background: #f97316;"></div>
+                <div class="mockup-card-block" style="background: #f97316;"></div>
+                <div class="mockup-card-block" style="background: #f97316;"></div>
               </div>
             </div>
           </div>
           <div class="portfolio-body">
-            <div class="portfolio-tag">Restaurant &amp; Food</div>
-            <div class="portfolio-title">The Cozy Fork</div>
-            <div class="portfolio-desc">Warm, appetizing design with online menu, hours, location map, and a reservation call-to-action. Perfect for diners, cafés, and local eateries.</div>
+            <div class="portfolio-tag">Service Business</div>
+            <h3 class="portfolio-title">Smith & Sons Contracting</h3>
+            <p class="portfolio-desc">Premium construction template with services showcase, project gallery, and quote requests.</p>
             <div class="portfolio-footer">
               <div class="portfolio-features">
-                <span class="portfolio-chip">Menu Page</span>
-                <span class="portfolio-chip">Hours</span>
-                <span class="portfolio-chip">Map</span>
-              </div>
-              <div class="portfolio-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Contractor -->
-        <div class="portfolio-card reveal reveal-delay-1" data-category="trades">
-          <div class="portfolio-preview">
-            <div class="browser-bar">
-              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-              <div class="browser-url"></div>
-            </div>
-            <div class="portfolio-mockup" style="background:#0d1b2a;">
-              <div class="mockup-nav" style="background:#f97316;"></div>
-              <div class="mockup-hero" style="background:linear-gradient(135deg,#0d1b2a,#1e3a5f);">
-                <div class="mockup-line"></div>
-                <div class="mockup-line short"></div>
-                <div class="mockup-btn-fake"></div>
-              </div>
-              <div class="mockup-cards">
-                <div class="mockup-card-block" style="background:#f97316;opacity:0.45;"></div>
-                <div class="mockup-card-block" style="background:#f97316;opacity:0.45;"></div>
-                <div class="mockup-card-block" style="background:#f97316;opacity:0.45;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-body">
-            <div class="portfolio-tag">Trades &amp; Contractors</div>
-            <div class="portfolio-title">Smith &amp; Sons Contracting</div>
-            <div class="portfolio-desc">Bold, trustworthy design built for contractors, roofers, plumbers, and electricians. Features a services list, photo gallery, and a quick quote form.</div>
-            <div class="portfolio-footer">
-              <div class="portfolio-features">
-                <span class="portfolio-chip">Gallery</span>
-                <span class="portfolio-chip">Quote Form</span>
                 <span class="portfolio-chip">Services</span>
-              </div>
-              <div class="portfolio-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Salon / Beauty -->
-        <div class="portfolio-card reveal reveal-delay-2" data-category="service">
-          <div class="portfolio-preview">
-            <div class="browser-bar">
-              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-              <div class="browser-url"></div>
-            </div>
-            <div class="portfolio-mockup" style="background:#1f1018;">
-              <div class="mockup-nav" style="background:#d4a0c0;"></div>
-              <div class="mockup-hero" style="background:linear-gradient(135deg,#3b1030,#7b2d5e);">
-                <div class="mockup-line"></div>
-                <div class="mockup-line short"></div>
-                <div class="mockup-btn-fake"></div>
-              </div>
-              <div class="mockup-cards">
-                <div class="mockup-card-block" style="background:#d4a0c0;opacity:0.5;"></div>
-                <div class="mockup-card-block" style="background:#d4a0c0;opacity:0.5;"></div>
-                <div class="mockup-card-block" style="background:#d4a0c0;opacity:0.5;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-body">
-            <div class="portfolio-tag">Professional Services</div>
-            <div class="portfolio-title">Bloom Beauty Studio</div>
-            <div class="portfolio-desc">Elegant and modern design for salons, spas, and beauty studios. Includes a services & pricing page, online booking link, and Instagram gallery section.</div>
-            <div class="portfolio-footer">
-              <div class="portfolio-features">
-                <span class="portfolio-chip">Booking</span>
-                <span class="portfolio-chip">Pricing</span>
                 <span class="portfolio-chip">Gallery</span>
               </div>
-              <div class="portfolio-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
+              <a href="index%20(5).html" class="portfolio-arrow" aria-label="View project">
+                <svg viewBox="0 0 24 24"><polyline points="5 12 19 12M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- 4. Retail shop -->
-        <div class="portfolio-card reveal" data-category="retail">
+        <!-- The Cozy Fork -->
+        <div class="portfolio-card reveal reveal-delay-1" data-category="retail">
           <div class="portfolio-preview">
             <div class="browser-bar">
-              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
               <div class="browser-url"></div>
             </div>
-            <div class="portfolio-mockup" style="background:#0f2018;">
-              <div class="mockup-nav" style="background:#4ade80;"></div>
-              <div class="mockup-hero" style="background:linear-gradient(135deg,#0f2018,#1a4030);">
+            <div class="portfolio-mockup">
+              <div class="mockup-nav" style="background: #2d1a06;"></div>
+              <div class="mockup-hero" style="background: linear-gradient(135deg, #5c3310, #2d1a06);">
                 <div class="mockup-line"></div>
                 <div class="mockup-line short"></div>
-                <div class="mockup-btn-fake"></div>
+                <div class="mockup-btn-fake" style="background: #c8893a; width: 80px;"></div>
               </div>
               <div class="mockup-cards">
-                <div class="mockup-card-block" style="background:#4ade80;opacity:0.45;"></div>
-                <div class="mockup-card-block" style="background:#4ade80;opacity:0.45;"></div>
-                <div class="mockup-card-block" style="background:#4ade80;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background: #c8893a;"></div>
+                <div class="mockup-card-block" style="background: #c8893a;"></div>
+                <div class="mockup-card-block" style="background: #c8893a;"></div>
               </div>
             </div>
           </div>
           <div class="portfolio-body">
-            <div class="portfolio-tag">Retail &amp; Shops</div>
-            <div class="portfolio-title">Main Street Market</div>
-            <div class="portfolio-desc">Clean, friendly storefront design for boutiques, gift shops, and local retailers. Showcases products, store hours, location, and a contact form.</div>
+            <div class="portfolio-tag">Retail / Restaurant</div>
+            <h3 class="portfolio-title">The Cozy Fork</h3>
+            <p class="portfolio-desc">Elegant restaurant template with menu showcase, reservations, and daily specials section.</p>
             <div class="portfolio-footer">
               <div class="portfolio-features">
-                <span class="portfolio-chip">Products</span>
-                <span class="portfolio-chip">Hours</span>
-                <span class="portfolio-chip">Contact</span>
+                <span class="portfolio-chip">Menu</span>
+                <span class="portfolio-chip">Reservations</span>
               </div>
-              <div class="portfolio-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Landscaping -->
-        <div class="portfolio-card reveal reveal-delay-1" data-category="trades">
-          <div class="portfolio-preview">
-            <div class="browser-bar">
-              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-              <div class="browser-url"></div>
-            </div>
-            <div class="portfolio-mockup" style="background:#101a10;">
-              <div class="mockup-nav" style="background:#86efac;"></div>
-              <div class="mockup-hero" style="background:linear-gradient(135deg,#14320f,#2d6b25);">
-                <div class="mockup-line"></div>
-                <div class="mockup-line short"></div>
-                <div class="mockup-btn-fake"></div>
-              </div>
-              <div class="mockup-cards">
-                <div class="mockup-card-block" style="background:#86efac;opacity:0.45;"></div>
-                <div class="mockup-card-block" style="background:#86efac;opacity:0.45;"></div>
-                <div class="mockup-card-block" style="background:#86efac;opacity:0.45;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-body">
-            <div class="portfolio-tag">Trades &amp; Contractors</div>
-            <div class="portfolio-title">GreenEdge Lawn &amp; Landscape</div>
-            <div class="portfolio-desc">Fresh, outdoorsy design for lawn care, landscaping, and tree service companies. Features a before/after photo section, service areas, and a free estimate form.</div>
-            <div class="portfolio-footer">
-              <div class="portfolio-features">
-                <span class="portfolio-chip">Before/After</span>
-                <span class="portfolio-chip">Estimate Form</span>
-              </div>
-              <div class="portfolio-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Auto / Mechanic -->
-        <div class="portfolio-card reveal reveal-delay-2" data-category="service">
-          <div class="portfolio-preview">
-            <div class="browser-bar">
-              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-              <div class="browser-url"></div>
-            </div>
-            <div class="portfolio-mockup" style="background:#111111;">
-              <div class="mockup-nav" style="background:#ef4444;"></div>
-              <div class="mockup-hero" style="background:linear-gradient(135deg,#1a0000,#3f0a0a);">
-                <div class="mockup-line"></div>
-                <div class="mockup-line short"></div>
-                <div class="mockup-btn-fake"></div>
-              </div>
-              <div class="mockup-cards">
-                <div class="mockup-card-block" style="background:#ef4444;opacity:0.45;"></div>
-                <div class="mockup-card-block" style="background:#ef4444;opacity:0.45;"></div>
-                <div class="mockup-card-block" style="background:#ef4444;opacity:0.45;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-body">
-            <div class="portfolio-tag">Professional Services</div>
-            <div class="portfolio-title">Precision Auto Care</div>
-            <div class="portfolio-desc">Sharp, no-nonsense design for auto shops, mechanics, and detailers. Includes a services list, customer reviews section, hours, and a click-to-call button.</div>
-            <div class="portfolio-footer">
-              <div class="portfolio-features">
-                <span class="portfolio-chip">Reviews</span>
-                <span class="portfolio-chip">Click-to-Call</span>
-                <span class="portfolio-chip">Services</span>
-              </div>
-              <div class="portfolio-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
+              <a href="index%20(6).html" class="portfolio-arrow" aria-label="View project">
+                <svg viewBox="0 0 24 24"><polyline points="5 12 19 12M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- CTA strip -->
-      <div class="portfolio-cta reveal">
-        <span class="section-label">Ready to get started?</span>
-        <p>Don't see your type of business above? No problem — I build sites for all kinds of local businesses. Let's talk about what would work best for you.</p>
-        <a href="#contact" class="btn btn-primary">Get a Free Quote →</a>
+      <div class="portfolio-cta">
+        <p>Looking for a website template or custom design? Let's talk about bringing your vision to life.</p>
+        <a href="templates.html" class="btn btn-primary">View All Templates</a>
       </div>
 
     </div>
   </section>
 
-  <!-- ─── CONTACT ────────────────────────────────────────────── -->
-  <section id="contact" aria-label="Contact">
+  <!-- ─── CONTACT ────────────────────────────────────────────────– -->
+  <section id="contact">
     <div class="container">
       <div class="contact-grid">
-
         <div>
           <span class="section-label reveal">Get In Touch</span>
-          <h2 class="section-title reveal reveal-delay-1">Let's get your<br/>business <em>online.</em></h2>
+          <h2 class="section-title reveal reveal-delay-1">Ready to Start <em>Building?</em></h2>
           <div class="rule reveal reveal-delay-2"></div>
-          <p class="section-body reveal reveal-delay-2">Ready to get started or just have a question? Reach out — I'd love to hear about your business and talk through what I can do for you. No pressure, no obligation, free quote.</p>
-
-          <div class="contact-detail">
-            <div class="contact-item reveal reveal-delay-2">
-              <div class="contact-item-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
+          <p class="section-body reveal reveal-delay-2">Let's discuss your project. Whether it's a new website, redesign, or custom development, I'm here to help bring your ideas to life.</p>
+          <div class="contact-detail reveal reveal-delay-2">
+            <div class="contact-item">
+              <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
               <div>
-                <div class="contact-item-label">Location</div>
-                <div class="contact-item-value">Princeton, NC &amp; Surrounding Areas</div>
+                <div class="contact-item-label">Call</div>
+                <div class="contact-item-value">+1 (555) 000-0000</div>
               </div>
             </div>
-            <div class="contact-item reveal reveal-delay-3">
-              <div class="contact-item-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
               <div>
                 <div class="contact-item-label">Email</div>
-                <div class="contact-item-value">christopher@cswebsolutions.com</div>
+                <div class="contact-item-value">hello@christophersmith.dev</div>
               </div>
             </div>
-            <div class="contact-item reveal reveal-delay-4">
-              <div class="contact-item-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
               <div>
-                <div class="contact-item-label">Phone / Text</div>
-                <div class="contact-item-value">(919) 555-0172</div>
+                <div class="contact-item-label">Location</div>
+                <div class="contact-item-value">Princeton, NC</div>
               </div>
             </div>
           </div>
         </div>
-
         <div class="contact-form-wrap reveal reveal-delay-1">
-          <p class="form-title">Send me a message</p>
-
-          <form id="contact-form" novalidate>
+          <div class="form-title">Send a Message</div>
+          <form>
             <div class="form-row">
-              <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" placeholder="John" required />
-              </div>
-              <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" placeholder="Doe" required />
-              </div>
+              <div class="form-group"><label>First Name</label><input type="text" placeholder="John" /></div>
+              <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" /></div>
             </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="john@yourbusiness.com" required />
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number (optional)</label>
-              <input type="tel" id="phone" name="phone" placeholder="(919) 555-0000" />
-            </div>
-            <div class="form-group">
-              <label for="business">Business Name</label>
-              <input type="text" id="business" name="business" placeholder="Your Business Name" />
-            </div>
-            <div class="form-group">
-              <label for="service">What can I help you with?</label>
-              <select id="service" name="service">
-                <option value="" disabled selected>Select a service…</option>
-                <option>New Website Build</option>
-                <option>Website Hosting</option>
-                <option>Website Updates / Edits</option>
-                <option>Tech Support</option>
-                <option>Not Sure — Just Exploring</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Tell me about your business</label>
-              <textarea id="message" name="message" placeholder="A little about your business and what you're looking for…" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary form-submit">Send Message →</button>
+            <div class="form-group"><label>Email</label><input type="email" placeholder="john@example.com" /></div>
+            <div class="form-group"><label>Subject</label><input type="text" placeholder="Website Inquiry" /></div>
+            <div class="form-group"><label>Message</label><textarea placeholder="Tell me about your project..."></textarea></div>
+            <button type="submit" class="btn btn-primary form-submit">Send Message</button>
           </form>
-
-          <div class="form-success" id="form-success" role="status" aria-live="polite">
-            <div class="form-success-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <h3>Message sent!</h3>
-            <p>Thanks for reaching out. I'll get back to you within one business day — usually much sooner.</p>
+          <div class="form-success">
+            <div class="form-success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <h3>Thank you!</h3>
+            <p>I'll get back to you as soon as possible.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ─── FOOTER ─────────────────────────────────────────────── -->
+  <!-- ─── FOOTER ────────────────────────────────────────────────– -->
   <footer>
     <div class="container">
       <div class="footer-top">
-
         <div class="footer-brand">
-          <div class="nav-logo">
-            <div class="logo-mark" style="width:28px;height:28px;" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </div>
-            <div>
-              <span class="logo-text">CS Web Solutions</span>
-              <span class="logo-sub">Princeton, NC</span>
-            </div>
-          </div>
-          <p class="footer-tagline">Professional web services for local businesses — built with care right here in Princeton, NC.</p>
+          <div class="logo-text">Christopher Smith</div>
+          <span class="logo-sub" style="color: var(--accent);">Web Solutions</span>
+          <p class="footer-tagline">Custom web design and development for businesses in Princeton, NC.</p>
         </div>
-
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="templates.html">Templates</a></li>
+            <li><a href="https://github.com/sackomatic/Chris-Smith-professional-" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="#services">New Website Builds</a></li>
-            <li><a href="#services">Website Hosting</a></li>
-            <li><a href="#services">Site Updates &amp; Edits</a></li>
-            <li><a href="#services">Tech Support</a></li>
+            <li><a href="#services">Web Design</a></li>
+            <li><a href="#services">Development</a></li>
+            <li><a href="#contact">Custom Solutions</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Company</h4>
+          <h4>Contact</h4>
           <ul>
-            <li><a href="#about">About Christopher</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Free Quote</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Get in Touch</a></li>
+            <li><a href="mailto:hello@christophersmith.dev">Send Email</a></li>
+            <li><a href="https://github.com/sackomatic/Chris-Smith-professional-" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h4>Reach Me</h4>
-          <ul>
-            <li><a href="mailto:christopher@cswebsolutions.com">Send an Email</a></li>
-            <li><a href="tel:+19195550172">Call or Text</a></li>
-            <li><a href="#contact">Leave a Message</a></li>
-          </ul>
-        </div>
-
       </div>
-
       <div class="footer-bottom">
-        <span>© 2025 Christopher Smith Web Solutions. Princeton, NC.</span>
-        <span>Serving Johnston County &amp; Surrounding Areas</span>
+        <span>© 2025 Christopher Smith Web Solutions. All rights reserved.</span>
+        <span class="footer-credit">Crafted with care.</span>
       </div>
     </div>
   </footer>
 
-  <!-- ─── BACK TO TOP ────────────────────────────────────────── -->
-  <button id="back-to-top" aria-label="Back to top">
-    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-  </button>
+  <button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
-  <!-- ─── SCRIPTS ────────────────────────────────────────────── -->
   <script>
-    /* ── Grab elements early so onScroll can use btt ── */
-    const nav      = document.getElementById('nav');
-    const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
-    const sections = document.querySelectorAll('section[id]');
-    const btt      = document.getElementById('back-to-top');
-
-    function onScroll() {
-      nav.classList.toggle('scrolled', window.scrollY > 10);
-      btt.classList.toggle('visible', window.scrollY > 300);
-      let current = '';
-      sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
-      });
-      navLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === current));
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    /* ── Mobile hamburger ── */
-    const ham   = document.getElementById('hamburger');
-    const mMenu = document.getElementById('mobile-menu');
-
-    function closeMenu() {
-      ham.classList.remove('open');
-      mMenu.classList.remove('open');
-      ham.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    ham.addEventListener('click', () => {
-      const isOpen = ham.classList.toggle('open');
-      mMenu.classList.toggle('open', isOpen);
-      ham.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-
-    document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', closeMenu));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-
-    /* ── Back to top ── */
+    const nav = document.getElementById('nav');
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', scrollY > 10);
+      btt.classList.toggle('visible', scrollY > 300);
+    }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    /* ── Scroll reveal ── */
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    /* ── Contact form ── */
-    const form    = document.getElementById('contact-form');
-    const success = document.getElementById('form-success');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      let valid = true;
-      form.querySelectorAll('[required]').forEach(field => {
-        field.style.borderColor = '';
-        if (!field.value.trim()) { field.style.borderColor = '#c0392b'; valid = false; }
-      });
-      if (!valid) return;
-      const btn = form.querySelector('.form-submit');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      setTimeout(() => { form.style.display = 'none'; success.style.display = 'block'; }, 1200);
+    const ham = document.getElementById('ham');
+    const mob = document.getElementById('mob-menu');
+    ham.addEventListener('click', () => {
+      const o = ham.classList.toggle('open');
+      mob.classList.toggle('open', o);
+      document.body.style.overflow = o ? 'hidden' : '';
     });
+    document.querySelectorAll('.mob-l').forEach(a => a.addEventListener('click', () => {
+      ham.classList.remove('open'); mob.classList.remove('open'); document.body.style.overflow = '';
+    }));
 
-    form.querySelectorAll('[required]').forEach(field => {
-      field.addEventListener('input', () => { if (field.value.trim()) field.style.borderColor = ''; });
-    });
+    const reveal = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); reveal.unobserve(e.target); } }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => reveal.observe(el));
 
-    /* ── Portfolio filter ── */
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioCards = document.querySelectorAll('.portfolio-card[data-category]');
-
-    filterBtns.forEach(btn => {
+    // Portfolio filtering
+    document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        portfolioCards.forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
+        const filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
             card.classList.remove('hidden');
           } else {
             card.classList.add('hidden');
@@ -1743,7 +1388,18 @@
         });
       });
     });
-  </script>
 
+    // Form submission
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.querySelector('.form-success').style.display = 'block';
+      document.querySelector('form').style.display = 'none';
+      setTimeout(() => {
+        document.querySelector('form').reset();
+        document.querySelector('.form-success').style.display = 'none';
+        document.querySelector('form').style.display = 'block';
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
