@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christopher Smith Web Solutions — Princeton, NC</title>
+
+  <!-- Google Fonts: Fraunces (display) + Plus Jakarta Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Primary palette — warm charcoal + soft sage green */
+      --navy:       #1f2421;   /* deep warm charcoal  */
+      --navy-mid:   #2c3830;   /* slightly lighter    */
+      --navy-light: #3d4a3f;   /* muted forest        */
+      --accent:     #7baf8e;   /* soft sage green     */
+      --accent-dk:  #5d9472;   /* deeper sage         */
+
+      /* Neutrals — warm-tinted, never cold */
+      --white:      #fdfcf9;   /* warm white          */
+      --off-white:  #f4f1eb;   /* linen               */
+      --gray-light: #e5e0d8;   /* warm stone          */
+      --gray-mid:   #b0a99e;   /* warm mid gray       */
+      --gray-dark:  #6b625a;   /* warm dark gray      */
+      --text-body:  #2a2420;   /* soft near-black     */
+
+      /* Type */
+      --ff-display: 'Fraunces', Georgia, serif;
+      --ff-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+      /* Motion */
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* Nav height */
+      --nav-h: 72px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--ff-body);
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITY ──────────────────────────────────────────────── */
+    .container {
+      width: min(1160px, 100% - 3rem);
+      margin-inline: auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--navy);
+    }
+
+    .section-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--gray-dark);
+      max-width: 56ch;
+      line-height: 1.8;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-in-out);
+      text-transform: uppercase;
+    }
+
+    .btn-primary { background: var(--accent); color: var(--white); }
+    .btn-primary:hover { background: var(--accent-dk); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .rule { width: 48px; height: 2px; background: var(--accent); margin-bottom: 1.5rem; }
+
+    /* ─── NAVIGATION ───────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      background: rgba(31, 36, 33, 0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: box-shadow 0.3s ease;
+    }
+
+    #nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.28); }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+    .nav-logo:hover .logo-mark { transform: rotate(-8deg) scale(1.1); }
+    .logo-mark svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .logo-text {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .logo-sub {
+      display: block;
+      font-family: var(--ff-body);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: -3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s ease;
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s var(--ease-out-expo);
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--accent);
+      padding: 0.55rem 1.2rem;
+      border-radius: 4px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .nav-cta:hover { background: var(--accent-dk); transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.35s var(--ease-out-expo);
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+
+    .mobile-menu a {
+      font-family: var(--ff-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.75);
+      transition: color 0.2s ease;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    #home {
+      min-height: 100svh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: var(--nav-h);
+    }
+
+    .hero-geo { position: absolute; inset: 0; pointer-events: none; }
+
+    .geo-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(123, 175, 142, 0.12);
+    }
+    .geo-circle:nth-child(1) { width: 700px; height: 700px; top: -200px; right: -200px; }
+    .geo-circle:nth-child(2) { width: 450px; height: 450px; bottom: -100px; left: -150px; border-color: rgba(255,255,255,0.05); }
+    .geo-circle:nth-child(3) { width: 300px; height: 300px; top: 50%; right: 15%; transform: translateY(-50%); border-color: rgba(123,175,142,0.06); }
+
+    .geo-line { position: absolute; background: rgba(123, 175, 142, 0.15); }
+    .geo-line-h { height: 1px; width: 200px; top: 30%; left: 0; }
+    .geo-line-v { width: 1px; height: 160px; bottom: 20%; right: 22%; }
+
+    .dot-grid {
+      position: absolute;
+      top: 0; right: 0;
+      width: 380px; height: 380px;
+      background-image: radial-gradient(rgba(123,175,142,0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 70% 70% at 80% 20%, black 0%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 80% 20%, black 0%, transparent 80%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 6rem 0;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.75rem;
+    }
+    .hero-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      max-width: 44ch;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .local-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(123,175,142,0.12);
+      border: 1px solid rgba(123,175,142,0.25);
+      border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.04em;
+    }
+    .local-badge svg { width: 13px; height: 13px; fill: var(--accent); }
+
+    /* Right panel */
+    .hero-features { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .hero-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1.1rem 1.25rem;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .hero-feature:hover {
+      background: rgba(123,175,142,0.08);
+      border-color: rgba(123,175,142,0.25);
+    }
+
+    .hero-feature-icon {
+      width: 38px; height: 38px;
+      flex-shrink: 0;
+      background: rgba(123,175,142,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-feature-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .hero-feature-title { font-size: 0.92rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem; }
+    .hero-feature-body { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: bob 2.5s ease-in-out infinite;
+    }
+    .scroll-hint-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(123,175,142,0.5), transparent); }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── ABOUT ────────────────────────────────────────────────── */
+    #about { padding: 7rem 0; background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-visual { position: relative; height: 440px; }
+
+    .about-bracket {
+      position: absolute;
+      top: -16px; left: -16px;
+      width: 56px; height: 56px;
+      border-top: 3px solid var(--accent);
+      border-left: 3px solid var(--accent);
+    }
+
+    .about-card-main {
+      position: absolute;
+      width: 78%; height: 82%;
+      top: 0; left: 0;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .about-card-main::before {
+      content: '';
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      width: 120px; height: 120px;
+      background-image:
+        linear-gradient(rgba(123,175,142,0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123,175,142,0.2) 1px, transparent 1px);
+      background-size: 20px 20px;
+      border-radius: 4px;
+    }
+
+    .about-card-quote {
+      font-family: var(--ff-display);
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.55;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-card-accent {
+      position: absolute;
+      width: auto;
+      bottom: 1.25rem; right: 1.25rem;
+      background: var(--white);
+      border: 2px solid var(--gray-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 1.1rem;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    }
+
+    .card-big-num { font-family: var(--ff-display); font-size: 1.75rem; font-weight: 700; color: var(--navy); line-height: 1; white-space: nowrap; }
+    .card-big-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-dark); line-height: 1.4; max-width: 9ch; }
+
+    .about-text-block { max-width: 48ch; }
+
+    .values-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .values-list li { display: flex; align-items: flex-start; gap: 1rem; }
+
+    .value-icon {
+      width: 32px; height: 32px;
+      flex-shrink: 0;
+      background: var(--off-white);
+      border: 1px solid var(--gray-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .value-icon svg { width: 15px; height: 15px; fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .value-text strong { display: block; font-size: 0.92rem; font-weight: 500; color: var(--navy); margin-bottom: 0.15rem; }
+    .value-text span { font-size: 0.87rem; font-weight: 300; color: var(--gray-dark); }
+
+    /* ─── SERVICES ─────────────────────────────────────────────── */
+    #services { padding: 7rem 0; background: var(--off-white); position: relative; }
+    #services::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--gray-light); }
+
+    .services-header { text-align: center; max-width: 52ch; margin: 0 auto 4rem; }
+    .services-header .section-body { margin: 1rem auto 0; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px;
+      background: var(--gray-light);
+      border: 1.5px solid var(--gray-light);
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      transition: background 0.3s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--accent);
+      transition: width 0.5s var(--ease-out-expo);
+    }
+
+    .service-card:hover { background: var(--navy); }
+    .service-card:hover::after { width: 100%; }
+    .service-card:hover .service-num, .service-card:hover .service-body { color: rgba(255,255,255,0.6); }
+    .service-card:hover .service-title { color: var(--white); }
+    .service-card:hover .service-icon-wrap { background: rgba(123,175,142,0.15); border-color: rgba(123,175,142,0.3); }
+    .service-card:hover .service-icon-wrap svg { stroke: var(--accent); }
+
+    .service-num { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; color: var(--gray-mid); margin-bottom: 1.5rem; transition: color 0.3s ease; }
+
+    .service-icon-wrap {
+      width: 48px; height: 48px;
+      border: 1px solid var(--gray-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      transition: all 0.3s ease;
+    }
+    .service-icon-wrap svg { width: 20px; height: 20px; fill: none; stroke: var(--navy-mid); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s ease; }
+
+    .service-title { font-family: var(--ff-display); font-size: 1.35rem; font-weight: 700; color: var(--navy); margin-bottom: 0.75rem; line-height: 1.25; transition: color 0.3s ease; }
+    .service-body { font-size: 0.88rem; font-weight: 300; color: var(--gray-dark); line-height: 1.75; transition: color 0.3s ease; }
+
+    /* ─── CONTACT ──────────────────────────────────────────────── */
+    #contact { padding: 7rem 0; background: var(--white); }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: start; }
+
+    .contact-detail { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+
+    .contact-item-icon {
+      width: 36px; height: 36px;
+      background: var(--off-white);
+      border: 1px solid var(--gray-light);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-item-icon svg { width: 16px; height: 16px; fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .contact-item-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 0.2rem; }
+    .contact-item-value { font-size: 0.95rem; font-weight: 400; color: var(--navy); }
+
+    .contact-form-wrap { background: var(--off-white); border: 1px solid var(--gray-light); padding: 2.5rem; }
+
+    .form-title { font-family: var(--ff-display); font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 1.75rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.2rem; }
+
+    .form-group label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-dark); }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: var(--ff-body);
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--navy);
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 0;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
+
+    .form-success { display: none; text-align: center; padding: 2rem; }
+    .form-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--off-white); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .form-success-icon svg { width: 24px; height: 24px; fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .form-success h3 { font-family: var(--ff-display); color: var(--navy); margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.9rem; color: var(--gray-dark); }
+
+    /* ─── FOOTER ───────────────────────────────────────────────── */
+    footer { background: var(--navy); padding: 4rem 0 2rem; color: rgba(255,255,255,0.5); }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand .logo-text { color: var(--white); }
+    .footer-tagline { font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.4); margin-top: 1rem; line-height: 1.7; max-width: 28ch; }
+
+    .footer-col h4 { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col ul a { font-size: 0.87rem; font-weight: 300; color: rgba(255,255,255,0.45); transition: color 0.2s ease; }
+    .footer-col ul a:hover { color: var(--white); }
+
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+
+    /* ─── BACK TO TOP ──────────────────────────────────────────── */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 48px; height: 48px;
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s var(--ease-out-expo), background 0.2s ease;
+    }
+
+    #back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+    #back-to-top:hover { background: var(--accent-dk); }
+    #back-to-top svg { width: 18px; height: 18px; fill: none; stroke: var(--white); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ─── REVEAL ───────────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s var(--ease-out-expo); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+
+    /* ─── PORTFOLIO ────────────────────────────────────────────── */
+    #portfolio {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+
+    #portfolio::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--gray-light);
+    }
+
+    #portfolio { position: relative; }
+
+    .portfolio-header {
+      text-align: center;
+      max-width: 54ch;
+      margin: 0 auto 1rem;
+    }
+    .portfolio-header .section-body { margin: 1rem auto 0; }
+
+    /* Filter tabs */
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0 3rem;
+    }
+
+    .filter-btn {
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--gray-light);
+      background: var(--white);
+      color: var(--gray-dark);
+      cursor: pointer;
+      border-radius: 100px;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    /* Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .portfolio-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--gray-light);
+      background: var(--white);
+      transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+
+    /* Simulated browser screenshot */
+    .portfolio-preview {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    /* Browser chrome bar */
+    .browser-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 28px;
+      background: var(--gray-light);
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem;
+      gap: 0.35rem;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+
+    .browser-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .browser-dot:nth-child(1) { background: #f87171; }
+    .browser-dot:nth-child(2) { background: #fbbf24; }
+    .browser-dot:nth-child(3) { background: #4ade80; }
+
+    .browser-url {
+      flex: 1;
+      margin: 0 0.75rem;
+      height: 14px;
+      background: var(--white);
+      border-radius: 100px;
+      opacity: 0.7;
+    }
+
+    /* The fake page content inside the browser */
+    .portfolio-mockup {
+      position: absolute;
+      top: 28px; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+
+    /* Each template has its own colour theme */
+    .mockup-nav {
+      height: 18px;
+      border-radius: 3px;
+      opacity: 0.9;
+    }
+
+    .mockup-hero {
+      flex: 1;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.75rem;
+      gap: 0.35rem;
+    }
+
+    .mockup-line {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.6);
+    }
+    .mockup-line.short { width: 55%; }
+    .mockup-line.shorter { width: 35%; }
+    .mockup-btn-fake {
+      width: 60px; height: 14px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.9);
+      margin-top: 0.25rem;
+    }
+
+    .mockup-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .mockup-card-block {
+      border-radius: 3px;
+      opacity: 0.3;
+    }
+
+    /* Portfolio card body */
+    .portfolio-body {
+      padding: 1.25rem 1.4rem 1.4rem;
+    }
+
+    .portfolio-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .portfolio-title {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .portfolio-desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--gray-dark);
+      line-height: 1.6;
+    }
+
+    .portfolio-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-light);
+    }
+
+    .portfolio-features {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-chip {
+      font-size: 0.67rem;
+      font-weight: 500;
+      padding: 0.2rem 0.55rem;
+      border-radius: 100px;
+      background: var(--off-white);
+      color: var(--gray-dark);
+      border: 1px solid var(--gray-light);
+    }
+
+    .portfolio-arrow {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--off-white);
+      border: 1px solid var(--gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .portfolio-card:hover .portfolio-arrow {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .portfolio-arrow svg { width: 12px; height: 12px; fill: none; stroke: var(--gray-dark); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.2s ease; }
+    .portfolio-card:hover .portfolio-arrow svg { stroke: var(--white); }
+
+    /* Hidden cards (filtered out) */
+    .portfolio-card.hidden {
+      display: none;
+    }
+
+    /* CTA strip below grid */
+    .portfolio-cta {
+      text-align: center;
+      margin-top: 3.5rem;
+      padding: 2.5rem;
+      background: var(--off-white);
+      border: 1px solid var(--gray-light);
+      border-radius: 12px;
+    }
+
+    .portfolio-cta p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--gray-dark);
+      margin-bottom: 1.25rem;
+      max-width: 48ch;
+      margin-inline: auto;
+    }
+
+    @media (max-width: 960px) {
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-visual { height: 300px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .hero-title { font-size: 2.4rem; }
+    }
+
+    @media (max-width: 400px) {
+      .hero-actions { flex-direction: column; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="container nav-inner">
+
+      <a href="#home" class="nav-logo" aria-label="CS Web Solutions home">
+        <div class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div>
+          <span class="logo-text">CS Web Solutions</span>
+          <span class="logo-sub">Princeton, NC</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#home" class="active" data-nav="home">Home</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
+        <li><a href="#services" data-nav="services">Services</a></li>
+        <li><a href="#portfolio" data-nav="portfolio">Portfolio</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="nav-cta">Free Quote</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+    <a href="#home" class="mob-link">Home</a>
+    <a href="#about" class="mob-link">About</a>
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#portfolio" class="mob-link">Portfolio</a>
+    <a href="#contact" class="mob-link">Contact</a>
+  </div>
+
+  <!-- ─── HERO ───────────────────────────────────────────────── -->
+  <section id="home" aria-label="Hero">
+
+    <div class="hero-geo" aria-hidden="true">
+      <div class="dot-grid"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-line geo-line-h"></div>
+      <div class="geo-line geo-line-v"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+
+        <div>
+          <div class="local-badge">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Proudly Serving Princeton, NC &amp; Surrounding Areas
+          </div>
+          <p class="hero-eyebrow">Professional Web Services</p>
+          <h1 class="hero-title">
+            Your business<br/>deserves a<br/><em>great</em> website.
+          </h1>
+          <p class="hero-subtitle">
+            Hi, I'm Christopher Smith — a local web professional helping Princeton-area businesses get online, look great, and stay up to date. From brand-new sites to ongoing support, I've got you covered.
+          </p>
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">See What I Offer ↓</a>
+            <a href="#contact" class="btn btn-outline">Get a Free Quote</a>
+          </div>
+        </div>
+
+        <div class="hero-features" aria-label="Key services">
+          <div class="hero-feature">
+            <div class="hero-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div>
+              <div class="hero-feature-title">New Website Builds</div>
+              <div class="hero-feature-body">Custom-designed sites built from the ground up to represent your brand the right way.</div>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <div class="hero-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div>
+              <div class="hero-feature-title">Website Hosting</div>
+              <div class="hero-feature-body">Reliable, fast hosting so your site stays online around the clock without any hassle.</div>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <div class="hero-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div>
+              <div class="hero-feature-title">Content Updates</div>
+              <div class="hero-feature-body">Need to change hours, add photos, or update your menu? I'll handle it quickly for you.</div>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <div class="hero-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <div class="hero-feature-title">Tech Support</div>
+              <div class="hero-feature-body">Something not working right? Reach out and I'll get it sorted fast — no tech jargon.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="scroll-hint-line"></div>
+      <span>Scroll</span>
+    </div>
+
+  </section>
+
+  <!-- ─── ABOUT ──────────────────────────────────────────────── -->
+  <section id="about" aria-label="About Christopher Smith">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="about-bracket"></div>
+          <div class="about-card-main">
+            <p class="about-card-quote">"Every local business deserves a professional online presence — no matter the size."</p>
+          </div>
+          <div class="about-card-accent">
+            <div class="card-big-num">100%</div>
+            <div class="card-big-label">Local &amp; personal service</div>
+          </div>
+        </div>
+
+        <div class="about-text-block">
+          <span class="section-label reveal">About Me</span>
+          <h2 class="section-title reveal reveal-delay-1">A local expert<br/>you can actually <em>call.</em></h2>
+          <div class="rule reveal reveal-delay-2"></div>
+          <p class="section-body reveal reveal-delay-2">
+            I'm Christopher Smith, a web professional based right here in Princeton, NC. I started CS Web Solutions because I saw too many great local businesses either without a website, or stuck with something outdated that didn't reflect what they actually do.
+          </p>
+          <br/>
+          <p class="section-body reveal reveal-delay-2">
+            I work one-on-one with every client — no call centers, no outsourcing. When you reach out, you get me directly. Whether you're a restaurant, a contractor, a salon, or any other local business, I'll build and maintain something you're proud to share with customers.
+          </p>
+
+          <ul class="values-list" aria-label="Why work with me">
+            <li class="reveal reveal-delay-2">
+              <div class="value-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="value-text">
+                <strong>Personal &amp; Local</strong>
+                <span>You'll always deal directly with me — a real person from your community who cares about your success.</span>
+              </div>
+            </li>
+            <li class="reveal reveal-delay-3">
+              <div class="value-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="value-text">
+                <strong>Straightforward Pricing</strong>
+                <span>No hidden fees or confusing contracts. You'll know exactly what you're getting and what it costs upfront.</span>
+              </div>
+            </li>
+            <li class="reveal reveal-delay-4">
+              <div class="value-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="value-text">
+                <strong>Fast Turnaround</strong>
+                <span>I respect your time. Most updates are done same or next day, and new sites are delivered on schedule.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ───────────────────────────────────────────── -->
+  <section id="services" aria-label="Services">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label reveal">What I Offer</span>
+        <h2 class="section-title reveal reveal-delay-1">Everything your business<br/>needs to <em>shine online.</em></h2>
+        <p class="section-body reveal reveal-delay-2">Simple, affordable web services built for small and local businesses in the Princeton area. No tech jargon — just results you can see.</p>
+      </div>
+
+      <div class="services-grid" role="list">
+
+        <article class="service-card reveal" role="listitem">
+          <div class="service-num">01</div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="service-title">New Website Design &amp; Build</h3>
+          <p class="service-body">Don't have a website yet — or embarrassed by your current one? I'll design and build you a clean, professional site from scratch that looks great on phones, tablets, and computers. Includes your branding, contact info, photos, and anything else you need to make a great first impression.</p>
+        </article>
+
+        <article class="service-card reveal reveal-delay-1" role="listitem">
+          <div class="service-num">02</div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="service-title">Website Hosting</h3>
+          <p class="service-body">Once your site is live, it needs a reliable home on the internet. I offer affordable hosting plans that keep your site fast, secure, and online 24/7. No complicated dashboards to manage — I handle it all so you can focus on running your business.</p>
+        </article>
+
+        <article class="service-card reveal reveal-delay-1" role="listitem">
+          <div class="service-num">03</div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3 class="service-title">Website Updates &amp; Edits</h3>
+          <p class="service-body">Businesses change — and your website should keep up. Need to update your hours, add new services, swap out photos, post an announcement, or adjust your pricing? Just send me a message and I'll get it updated quickly, usually same or next business day.</p>
+        </article>
+
+        <article class="service-card reveal reveal-delay-2" role="listitem">
+          <div class="service-num">04</div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 class="service-title">Tech Support</h3>
+          <p class="service-body">Something not working right on your site? Getting error messages, having trouble with your business email, or just confused about something tech-related? I'm here to help. Reach out by phone, text, or email and I'll walk you through it — plain and simple, no tech jargon.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PORTFOLIO ────────────────────────────────────────────── -->
+  <section id="portfolio" aria-label="Portfolio & Templates">
+    <div class="container">
+
+      <div class="portfolio-header">
+        <span class="section-label reveal">Work &amp; Templates</span>
+        <h2 class="section-title reveal reveal-delay-1">Projects &amp; website<br/><em>templates I offer.</em></h2>
+        <p class="section-body reveal reveal-delay-2">Browse examples of sites I can build for your business. Every template is fully customized — your colors, your content, your brand. See something you like? Reach out and we'll make it yours.</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="portfolio-filters reveal reveal-delay-2" role="group" aria-label="Filter by category">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="restaurant">Restaurant &amp; Food</button>
+        <button class="filter-btn" data-filter="trades">Trades &amp; Contractors</button>
+        <button class="filter-btn" data-filter="retail">Retail &amp; Shops</button>
+        <button class="filter-btn" data-filter="service">Professional Services</button>
+      </div>
+
+      <div class="portfolio-grid">
+
+        <!-- 1. Restaurant -->
+        <div class="portfolio-card reveal" data-category="restaurant">
+          <div class="portfolio-preview">
+            <div class="browser-bar">
+              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              <div class="browser-url"></div>
+            </div>
+            <div class="portfolio-mockup" style="background:#1a1008;">
+              <div class="mockup-nav" style="background:#c8893a;"></div>
+              <div class="mockup-hero" style="background:linear-gradient(135deg,#2d1a06,#7c4a1a);">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+                <div class="mockup-btn-fake"></div>
+              </div>
+              <div class="mockup-cards">
+                <div class="mockup-card-block" style="background:#c8893a;opacity:0.5;"></div>
+                <div class="mockup-card-block" style="background:#c8893a;opacity:0.5;"></div>
+                <div class="mockup-card-block" style="background:#c8893a;opacity:0.5;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <div class="portfolio-tag">Restaurant &amp; Food</div>
+            <div class="portfolio-title">The Cozy Fork</div>
+            <div class="portfolio-desc">Warm, appetizing design with online menu, hours, location map, and a reservation call-to-action. Perfect for diners, cafés, and local eateries.</div>
+            <div class="portfolio-footer">
+              <div class="portfolio-features">
+                <span class="portfolio-chip">Menu Page</span>
+                <span class="portfolio-chip">Hours</span>
+                <span class="portfolio-chip">Map</span>
+              </div>
+              <div class="portfolio-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Contractor -->
+        <div class="portfolio-card reveal reveal-delay-1" data-category="trades">
+          <div class="portfolio-preview">
+            <div class="browser-bar">
+              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              <div class="browser-url"></div>
+            </div>
+            <div class="portfolio-mockup" style="background:#0d1b2a;">
+              <div class="mockup-nav" style="background:#f97316;"></div>
+              <div class="mockup-hero" style="background:linear-gradient(135deg,#0d1b2a,#1e3a5f);">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+                <div class="mockup-btn-fake"></div>
+              </div>
+              <div class="mockup-cards">
+                <div class="mockup-card-block" style="background:#f97316;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background:#f97316;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background:#f97316;opacity:0.45;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <div class="portfolio-tag">Trades &amp; Contractors</div>
+            <div class="portfolio-title">Smith &amp; Sons Contracting</div>
+            <div class="portfolio-desc">Bold, trustworthy design built for contractors, roofers, plumbers, and electricians. Features a services list, photo gallery, and a quick quote form.</div>
+            <div class="portfolio-footer">
+              <div class="portfolio-features">
+                <span class="portfolio-chip">Gallery</span>
+                <span class="portfolio-chip">Quote Form</span>
+                <span class="portfolio-chip">Services</span>
+              </div>
+              <div class="portfolio-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Salon / Beauty -->
+        <div class="portfolio-card reveal reveal-delay-2" data-category="service">
+          <div class="portfolio-preview">
+            <div class="browser-bar">
+              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              <div class="browser-url"></div>
+            </div>
+            <div class="portfolio-mockup" style="background:#1f1018;">
+              <div class="mockup-nav" style="background:#d4a0c0;"></div>
+              <div class="mockup-hero" style="background:linear-gradient(135deg,#3b1030,#7b2d5e);">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+                <div class="mockup-btn-fake"></div>
+              </div>
+              <div class="mockup-cards">
+                <div class="mockup-card-block" style="background:#d4a0c0;opacity:0.5;"></div>
+                <div class="mockup-card-block" style="background:#d4a0c0;opacity:0.5;"></div>
+                <div class="mockup-card-block" style="background:#d4a0c0;opacity:0.5;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <div class="portfolio-tag">Professional Services</div>
+            <div class="portfolio-title">Bloom Beauty Studio</div>
+            <div class="portfolio-desc">Elegant and modern design for salons, spas, and beauty studios. Includes a services & pricing page, online booking link, and Instagram gallery section.</div>
+            <div class="portfolio-footer">
+              <div class="portfolio-features">
+                <span class="portfolio-chip">Booking</span>
+                <span class="portfolio-chip">Pricing</span>
+                <span class="portfolio-chip">Gallery</span>
+              </div>
+              <div class="portfolio-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Retail shop -->
+        <div class="portfolio-card reveal" data-category="retail">
+          <div class="portfolio-preview">
+            <div class="browser-bar">
+              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              <div class="browser-url"></div>
+            </div>
+            <div class="portfolio-mockup" style="background:#0f2018;">
+              <div class="mockup-nav" style="background:#4ade80;"></div>
+              <div class="mockup-hero" style="background:linear-gradient(135deg,#0f2018,#1a4030);">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+                <div class="mockup-btn-fake"></div>
+              </div>
+              <div class="mockup-cards">
+                <div class="mockup-card-block" style="background:#4ade80;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background:#4ade80;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background:#4ade80;opacity:0.45;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <div class="portfolio-tag">Retail &amp; Shops</div>
+            <div class="portfolio-title">Main Street Market</div>
+            <div class="portfolio-desc">Clean, friendly storefront design for boutiques, gift shops, and local retailers. Showcases products, store hours, location, and a contact form.</div>
+            <div class="portfolio-footer">
+              <div class="portfolio-features">
+                <span class="portfolio-chip">Products</span>
+                <span class="portfolio-chip">Hours</span>
+                <span class="portfolio-chip">Contact</span>
+              </div>
+              <div class="portfolio-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Landscaping -->
+        <div class="portfolio-card reveal reveal-delay-1" data-category="trades">
+          <div class="portfolio-preview">
+            <div class="browser-bar">
+              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              <div class="browser-url"></div>
+            </div>
+            <div class="portfolio-mockup" style="background:#101a10;">
+              <div class="mockup-nav" style="background:#86efac;"></div>
+              <div class="mockup-hero" style="background:linear-gradient(135deg,#14320f,#2d6b25);">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+                <div class="mockup-btn-fake"></div>
+              </div>
+              <div class="mockup-cards">
+                <div class="mockup-card-block" style="background:#86efac;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background:#86efac;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background:#86efac;opacity:0.45;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <div class="portfolio-tag">Trades &amp; Contractors</div>
+            <div class="portfolio-title">GreenEdge Lawn &amp; Landscape</div>
+            <div class="portfolio-desc">Fresh, outdoorsy design for lawn care, landscaping, and tree service companies. Features a before/after photo section, service areas, and a free estimate form.</div>
+            <div class="portfolio-footer">
+              <div class="portfolio-features">
+                <span class="portfolio-chip">Before/After</span>
+                <span class="portfolio-chip">Estimate Form</span>
+              </div>
+              <div class="portfolio-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Auto / Mechanic -->
+        <div class="portfolio-card reveal reveal-delay-2" data-category="service">
+          <div class="portfolio-preview">
+            <div class="browser-bar">
+              <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+              <div class="browser-url"></div>
+            </div>
+            <div class="portfolio-mockup" style="background:#111111;">
+              <div class="mockup-nav" style="background:#ef4444;"></div>
+              <div class="mockup-hero" style="background:linear-gradient(135deg,#1a0000,#3f0a0a);">
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+                <div class="mockup-btn-fake"></div>
+              </div>
+              <div class="mockup-cards">
+                <div class="mockup-card-block" style="background:#ef4444;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background:#ef4444;opacity:0.45;"></div>
+                <div class="mockup-card-block" style="background:#ef4444;opacity:0.45;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <div class="portfolio-tag">Professional Services</div>
+            <div class="portfolio-title">Precision Auto Care</div>
+            <div class="portfolio-desc">Sharp, no-nonsense design for auto shops, mechanics, and detailers. Includes a services list, customer reviews section, hours, and a click-to-call button.</div>
+            <div class="portfolio-footer">
+              <div class="portfolio-features">
+                <span class="portfolio-chip">Reviews</span>
+                <span class="portfolio-chip">Click-to-Call</span>
+                <span class="portfolio-chip">Services</span>
+              </div>
+              <div class="portfolio-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA strip -->
+      <div class="portfolio-cta reveal">
+        <span class="section-label">Ready to get started?</span>
+        <p>Don't see your type of business above? No problem — I build sites for all kinds of local businesses. Let's talk about what would work best for you.</p>
+        <a href="#contact" class="btn btn-primary">Get a Free Quote →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ────────────────────────────────────────────── -->
+  <section id="contact" aria-label="Contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div>
+          <span class="section-label reveal">Get In Touch</span>
+          <h2 class="section-title reveal reveal-delay-1">Let's get your<br/>business <em>online.</em></h2>
+          <div class="rule reveal reveal-delay-2"></div>
+          <p class="section-body reveal reveal-delay-2">Ready to get started or just have a question? Reach out — I'd love to hear about your business and talk through what I can do for you. No pressure, no obligation, free quote.</p>
+
+          <div class="contact-detail">
+            <div class="contact-item reveal reveal-delay-2">
+              <div class="contact-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Location</div>
+                <div class="contact-item-value">Princeton, NC &amp; Surrounding Areas</div>
+              </div>
+            </div>
+            <div class="contact-item reveal reveal-delay-3">
+              <div class="contact-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value">christopher@cswebsolutions.com</div>
+              </div>
+            </div>
+            <div class="contact-item reveal reveal-delay-4">
+              <div class="contact-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Phone / Text</div>
+                <div class="contact-item-value">(919) 555-0172</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal reveal-delay-1">
+          <p class="form-title">Send me a message</p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Doe" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@yourbusiness.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number (optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="(919) 555-0000" />
+            </div>
+            <div class="form-group">
+              <label for="business">Business Name</label>
+              <input type="text" id="business" name="business" placeholder="Your Business Name" />
+            </div>
+            <div class="form-group">
+              <label for="service">What can I help you with?</label>
+              <select id="service" name="service">
+                <option value="" disabled selected>Select a service…</option>
+                <option>New Website Build</option>
+                <option>Website Hosting</option>
+                <option>Website Updates / Edits</option>
+                <option>Tech Support</option>
+                <option>Not Sure — Just Exploring</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell me about your business</label>
+              <textarea id="message" name="message" placeholder="A little about your business and what you're looking for…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Send Message →</button>
+          </form>
+
+          <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <div class="form-success-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Message sent!</h3>
+            <p>Thanks for reaching out. I'll get back to you within one business day — usually much sooner.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="logo-mark" style="width:28px;height:28px;" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div>
+              <span class="logo-text">CS Web Solutions</span>
+              <span class="logo-sub">Princeton, NC</span>
+            </div>
+          </div>
+          <p class="footer-tagline">Professional web services for local businesses — built with care right here in Princeton, NC.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">New Website Builds</a></li>
+            <li><a href="#services">Website Hosting</a></li>
+            <li><a href="#services">Site Updates &amp; Edits</a></li>
+            <li><a href="#services">Tech Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Christopher</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Free Quote</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Reach Me</h4>
+          <ul>
+            <li><a href="mailto:christopher@cswebsolutions.com">Send an Email</a></li>
+            <li><a href="tel:+19195550172">Call or Text</a></li>
+            <li><a href="#contact">Leave a Message</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 Christopher Smith Web Solutions. Princeton, NC.</span>
+        <span>Serving Johnston County &amp; Surrounding Areas</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── BACK TO TOP ────────────────────────────────────────── -->
+  <button id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ─── SCRIPTS ────────────────────────────────────────────── -->
+  <script>
+    /* ── Grab elements early so onScroll can use btt ── */
+    const nav      = document.getElementById('nav');
+    const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
+    const sections = document.querySelectorAll('section[id]');
+    const btt      = document.getElementById('back-to-top');
+
+    function onScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+      btt.classList.toggle('visible', window.scrollY > 300);
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+      });
+      navLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === current));
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ── Mobile hamburger ── */
+    const ham   = document.getElementById('hamburger');
+    const mMenu = document.getElementById('mobile-menu');
+
+    function closeMenu() {
+      ham.classList.remove('open');
+      mMenu.classList.remove('open');
+      ham.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    ham.addEventListener('click', () => {
+      const isOpen = ham.classList.toggle('open');
+      mMenu.classList.toggle('open', isOpen);
+      ham.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    /* ── Back to top ── */
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ── Scroll reveal ── */
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    /* ── Contact form ── */
+    const form    = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      let valid = true;
+      form.querySelectorAll('[required]').forEach(field => {
+        field.style.borderColor = '';
+        if (!field.value.trim()) { field.style.borderColor = '#c0392b'; valid = false; }
+      });
+      if (!valid) return;
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      setTimeout(() => { form.style.display = 'none'; success.style.display = 'block'; }, 1200);
+    });
+
+    form.querySelectorAll('[required]').forEach(field => {
+      field.addEventListener('input', () => { if (field.value.trim()) field.style.borderColor = ''; });
+    });
+
+    /* ── Portfolio filter ── */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card[data-category]');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        portfolioCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
